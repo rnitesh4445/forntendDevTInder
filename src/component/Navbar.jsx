@@ -3,9 +3,10 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import axios from 'axios';
 import Base_url from './utils/constant';
+
 import { useDispatch } from 'react-redux';
 import {removeUser} from './utils/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar =()=>{
     const user=useSelector((state)=>state.user);
@@ -46,15 +47,23 @@ const navigation=useNavigate();
                     open && (
                         <div className="absolute right-0 mt-1 w-40 bg-white shadow-lg rounded-lg p-2">
 
-                            <button className="block w-full text-left px-3 py-2 hover:bg-gray-100 rounded">
+                          <Link to="/profile">
+                            <button className="block w-full text-left px-3 py-2 hover:bg-gray-100 rounded cursor-pointer" onClick={()=>setOpen(false)}>
                                 Profile
                             </button>
-
-                            <button className="block w-full text-left px-3 py-2 hover:bg-gray-100 rounded">
-                                Settings
+                            </Link>
+                            <Link to="/request">
+                            <button className="block w-full text-left px-3 py-2 hover:bg-gray-100 rounded cursor-pointer" onClick={()=>setOpen(false)}>
+                                Requests
                             </button>
+                            </Link>
+                            <Link to="/connections">
+                                <button className="block w-full text-left px-3 py-2 hover:bg-gray-100 rounded cursor-pointer" onClick={()=>setOpen(false)}>
+                                    Connections
+                                </button>
+                            </Link>
 
-                            <button className="block w-full text-left px-3 py-2 hover:bg-red-100 text-red-500 rounded"  onClick={handleLogout}>
+                            <button className="block w-full text-left px-3 py-2 hover:bg-red-100 text-red-500 rounded cursor-pointer"  onClick={handleLogout}>
                                 Logout
                             </button>
 

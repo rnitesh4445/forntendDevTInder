@@ -1,17 +1,14 @@
-import React from 'react'
-import axios from 'axios';
-import { useState } from 'react';
-import appStore from './utils/appStore';
-import { useDispatch } from 'react-redux';
-import { addFeed } from './utils/feedSlice';
-import Base_url from './utils/constant';
+import { useSelector } from "react-redux";
+import EditProfile from "./EditProfile";
 
 const Profile = () => {
+  const user = useSelector((store) => store.user);
   return (
-    <div>
-     
-    </div>
-  )
-}
-
-export default Profile
+    user && (
+      <div>
+        <EditProfile user={user} />
+      </div>
+    )
+  );
+};
+export default Profile;
